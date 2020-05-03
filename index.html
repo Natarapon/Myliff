@@ -48,6 +48,16 @@
     }
 
     async function shareMsg() {
+      await liff.shareTargetPicker([
+        {
+          "type": "text",
+          "text": "ทดสอบส่ง TargetPicker"
+        },
+        {
+          "type": "text",
+          "text": "ส่งได้ 5 บัพเบอร์"
+        }
+      ])
     }
 
     function logOut() {
@@ -98,7 +108,11 @@
             "type": "sticker",
             "stickerId": 3,
             "packageId": 1
-          }
+          },
+          {
+            "type": "text",
+            "text": "ส่งได้  5  buble"
+           }
         ])
         alert("Message sent")
       }

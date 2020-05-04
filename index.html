@@ -27,7 +27,7 @@
   <p id="isLoggedIn"><b>isLoggedIn:</b> </p>
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
-  <p><a href="liff/path/?param=9">Link to Path</a></p>
+  <p><a href="https://natarapon.github.io/liff/path/?param=1">Link to Path</a></p>
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -43,6 +43,25 @@
   </script> -->
 
   <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  <script>
+    async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+    }
+    async function main() {
+      await liff.init({ liffId: "1654096275-Xr2D8RgB" })
+      if (liff.isLoggedIn()) {
+        getUserProfile()
+      } else {
+        liff.login({ redirectUri: "https://natarapon.github.io/liff/path" })
+      }
+    }
+    main()
+  </script>
   <script>
     function createUniversalLink() {
     }
